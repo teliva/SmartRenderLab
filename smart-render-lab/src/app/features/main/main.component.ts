@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   private modalService = inject(NgbModal);
   public formattedXml: string = "";
   public rawXml: string = "";
+  public isXmlValid = false;
   
   constructor() { }
   
@@ -29,6 +30,7 @@ export class MainComponent implements OnInit {
 
   beautify(rawXml: string): string {
     try {
+      this.isXmlValid = true;
       return format(rawXml, {
         indentation: '  ', // Two spaces
         filter: (node) => true, // Optional: filter nodes
@@ -36,6 +38,7 @@ export class MainComponent implements OnInit {
         lineSeparator: '\n'
       });
     } catch (e) {
+      this.isXmlValid = false;
       console.error("Invalid XML provided", e);
       return "Error parsing XML.";
     }

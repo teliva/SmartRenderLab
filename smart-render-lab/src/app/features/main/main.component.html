@@ -14,7 +14,9 @@
     <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">
         <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
             <span>Project XML</span>
-            <button type="button" class="btn btn-success" (click)="open(content)">
+            <button type="button" class="btn" (click)="open(content)"
+            [class.btn-success]="isXmlValid"
+                [class.btn-danger]="!isXmlValid">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-code-square" viewBox="0 0 16 16">
                     <path
@@ -29,7 +31,10 @@
         </h6>
         <div class="d-flex text-body-secondary pt-3">
             <div class="form-floating w-100">
-                <textarea (input)="onInputChange($event)" class="form-control" placeholder="Leave a comment here"
+                <textarea (input)="onInputChange($event)" class="form-control border-3"
+                [class.border-success]="isXmlValid"
+                [class.border-danger]="!isXmlValid"
+   placeholder="Leave a comment here"
                     id="floatingTextarea"></textarea>
                 <label for="floatingTextarea">Project XML</label>
             </div>
