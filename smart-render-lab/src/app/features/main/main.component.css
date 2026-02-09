@@ -1,0 +1,7 @@
+pre {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  max-height: 100%; /* Ensures it fills the modal-body */
+  overflow: auto;   /* Adds a horizontal scrollbar if lines are too long */
+}
