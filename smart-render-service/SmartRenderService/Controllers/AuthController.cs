@@ -1,3 +1,6 @@
+using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
+
 namespace SmartRenderService.Controllers;
 
 [ApiController]
@@ -6,7 +9,7 @@ namespace SmartRenderService.Controllers;
 public sealed class AuthController : ControllerBase
 {
     [HttpGet("token")]
-    public async Task<IActionResult> Authenticate([FromForm] InternalAuthenticateRequest request, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> Authenticate()
     {
         var userData = await _authService.LoginInternalUserAsync(request.UserName, request.Password, cancellationToken);
         return Ok(userData);
