@@ -1,9 +1,16 @@
 using Asp.Versioning;
+using SmartRenderService.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOptions<AuthOptions>()
     .Bind(builder.Configuration.GetSection(AuthOptions.SectionName))
+    .ValidateDataAnnotations()         
+    .ValidateOnStart();
+
+builder.Services.AddOptions<AppOptions>()
+    .Bind(builder.Configuration.GetSection(AppOptions.SectionName))
     .ValidateDataAnnotations()         
     .ValidateOnStart();
 
@@ -24,6 +31,15 @@ builder.Services.AddApiVersioning(options =>
 });
 
 builder.Services.AddOpenApi();
+
+builder.Services.AddHttpClient<IAuthService, AuthService>((serviceProvider, client) =>
+{
+    // Get your options
+    var settings = serviceProvider.GetRequiredService<IOptions<AppOptions>>().Value;
+    
+    client.BaseAddress = new Uri(settings.KitsWebApiUrl);
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+});
 
 var app = builder.Build();
 
