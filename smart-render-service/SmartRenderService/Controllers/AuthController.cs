@@ -27,6 +27,6 @@ public sealed class AuthController : ControllerBase
             return StatusCode(500, "Failed to retrieve authentication token.");
         }
 
-        return Ok(new { access_token = token });
+        return Ok(new TokenResponse { accessToken = token });
     }
 }

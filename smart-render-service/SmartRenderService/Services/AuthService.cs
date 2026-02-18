@@ -31,7 +31,6 @@ public class AuthService : IAuthService
         if (httpResponse.IsSuccessStatusCode)
         {
             var jsonString = await httpResponse.Content.ReadAsStringAsync();
-            Console.WriteLine(jsonString); // Or use a breakpoint here
 
             UserResponse? response = await httpResponse.Content.ReadFromJsonAsync<UserResponse>();
 

@@ -1,10 +1,9 @@
 using System.Text.Json.Serialization;
 
-public class UserResponse
+public record UserResponse
 {
-    // If the API wraps the user in a "data" or "user" property
     [JsonPropertyName("user")]
-    public User User { get; set; }
+    public required User User { get; set; }
 }
 
 public record User
