@@ -26,15 +26,18 @@ public class AuthService : IAuthService
         };
 
         using var content = new FormUrlEncodedContent(formData);
-        using HttpResponseMessage httpResponse = await _httpClient.PostAsync("/users/authenticate", content);
+        using HttpResponseMessage httpResponse = await _httpClient.PostAsync("users/authenticate", content);
 
         if (httpResponse.IsSuccessStatusCode)
         {
-            User? response = await httpResponse.Content.ReadFromJsonAsync<User>();
+            var jsonString = await httpResponse.Content.ReadAsStringAsync();
+            Console.WriteLine(jsonString); // Or use a breakpoint here
 
-            if (response != null && !string.IsNullOrEmpty(response.Access_Token))
+            UserResponse? response = await httpResponse.Content.ReadFromJsonAsync<UserResponse>();
+
+            if (response != null && !string.IsNullOrEmpty(response.User.Access_Token))
             {
-                return response.Access_Token;
+                return response.User.Access_Token;
             }
 
             throw new Exception("API returned success, but the Access Token was missing or null.");

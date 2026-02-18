@@ -1,5 +1,12 @@
 using System.Text.Json.Serialization;
 
+public class UserResponse
+{
+    // If the API wraps the user in a "data" or "user" property
+    [JsonPropertyName("user")]
+    public User User { get; set; }
+}
+
 public record User
 {
     public int UserId { get; set; }
@@ -17,11 +24,11 @@ public record User
     public int UserType { get; set; }
     public int DealerId { get; set; }
     public int LicenseAccess { get; set; }
-    [JsonPropertyName("accessToken")]
+    [JsonPropertyName("access_Token")]
     public required string Access_Token { get; set; }
-    [JsonPropertyName("refreshToken")]
+    [JsonPropertyName("refresh_Token")]
     public required string Refresh_Token { get; set; }
-    [JsonPropertyName("expiresIn")]
+    [JsonPropertyName("expires_In")]
     public required string Expires_In { get; set; }
     public required Profile Profile { get; set; }
     public string? SessionId { get; set; }

@@ -34,9 +34,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddHttpClient<IAuthService, AuthService>((serviceProvider, client) =>
 {
-    // Get your options
-    var settings = serviceProvider.GetRequiredService<IOptions<AppOptions>>().Value;
-    
+    var settings = serviceProvider.GetRequiredService<IOptions<AppOptions>>().Value;    
     client.BaseAddress = new Uri(settings.KitsWebApiUrl);
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
