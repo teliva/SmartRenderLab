@@ -2,6 +2,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Angular (No Browser)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/smart-render-lab",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start"], 
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
       "name": ".NET Core Launch (Backend)",
       "type": "coreclr",
       "request": "launch",
@@ -14,18 +24,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    {
-      "name": "Angular (Edge)",
-      "type": "msedge",
-      "request": "launch",
-      "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
-    }
   ],
   "compounds": [
     {
       "name": "Full Stack (Backend + Frontend)",
-      "configurations": [".NET Core Launch (Backend)", "Angular (Edge)"]
+      "configurations": [
+        ".NET Core Launch (Backend)",
+        "Angular (No Browser)"
+      ]
     }
   ]
 }

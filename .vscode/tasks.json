@@ -14,6 +14,28 @@
       "problemMatcher": "$msCompile"
     },
     {
+      "label": "start-angular",
+      "type": "shell",
+      "command": "ng serve",
+      "options": {
+        "cwd": "${workspaceFolder}/smart-render-lab"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(Local|Building|Generating)"
+          },
+          "endsPattern": {
+            "regexp": "(Local:|ready in|Index html generation complete)"
+          }
+        }
+      }
+    },
+    {
       "label": "watch",
       "command": "dotnet",
       "type": "process",
