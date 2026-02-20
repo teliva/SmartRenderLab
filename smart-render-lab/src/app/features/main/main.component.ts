@@ -8,22 +8,37 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent implements OnInit {
+
+export class MainComponent {
   private modalService = inject(NgbModal);
   public formattedXml: string = "";
   public rawXml: string = "";
-  public isXmlValid = false;
+  public isXmlValid: boolean = false;
   
-  constructor() { }
-  
-  ngOnInit() { }
+  public environmentKeyPhrases =
+    [
+      'Open Office',
+      'Acoustic Ceiling Tiles',
+      'Exposed Ceilings (Open Plenums)',
+      'Floor-To-Ceiling Window',
+      'Polished/Sealed Concrete flooring',
+      'Hardwood flooring',
+      'No furniture',
+      '20 foot ceiling Height'
+    ];
+  public backgroundKeyPhrasese =
+    [
+      'None',
+      'Environment',
+      'Blur'
+    ];
 
   onInputChange(event: Event) {
     const ele = event.target as HTMLInputElement;
     this.rawXml = ele.value;
+
     this.formattedXml = this.beautify(ele.value);
   }
-
   open(content: any) {
     this.modalService.open(content);
   }
@@ -43,5 +58,4 @@ export class MainComponent implements OnInit {
       return "Error parsing XML.";
     }
   }
-
 }

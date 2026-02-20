@@ -9,13 +9,14 @@
         </div>
     </div>
 </nav>
-
+<div class="alert alert-warning user-select-none" role="alert">
+    Do not share this link externally
+</div>
 <div class="container-fluid">
     <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">
         <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
             <span>Project XML</span>
-            <button type="button" class="btn" (click)="open(content)"
-            [class.btn-success]="isXmlValid"
+            <button type="button" class="btn" (click)="open(content)" [class.btn-success]="isXmlValid"
                 [class.btn-danger]="!isXmlValid">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-code-square" viewBox="0 0 16 16">
@@ -32,11 +33,65 @@
         <div class="d-flex text-body-secondary pt-3">
             <div class="form-floating w-100">
                 <textarea (input)="onInputChange($event)" class="form-control border-3"
-                [class.border-success]="isXmlValid"
-                [class.border-danger]="!isXmlValid"
-   placeholder="Leave a comment here"
+                    [class.border-success]="isXmlValid" [class.border-danger]="!isXmlValid"
                     id="floatingTextarea"></textarea>
                 <label for="floatingTextarea">Project XML</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-betwee">
+    <div class="col-5 m-3 p-3 bg-body rounded shadow-sm user-select-none">
+        <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
+            <span>Environment Key Phrases</span>
+        </h6>
+        <div class="text-body-secondary pt-3">
+            <div class="input-group pb-2 mb-2 border-bottom">
+                <input type="text" class="form-control" placeholder="Environment Key Phrase"
+                    aria-label="Environment Key Phrase" aria-describedby="button-addkeyphrase">
+                <button class="btn btn-info" type="button" id="button-addon"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    </svg></button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z">
+                        </path>
+                    </svg>
+                    Office Space
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-5 m-3 p-3 bg-body rounded shadow-sm user-select-none">
+        <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
+            <span>Environment Key Phrases</span>
+        </h6>
+        <div class="text-body-secondary pt-3">
+            <div class="input-group pb-2 mb-2 border-bottom">
+                <input type="text" class="form-control" placeholder="Environment Key Phrase"
+                    aria-label="Environment Key Phrase" aria-describedby="button-addkeyphrase">
+                <button class="btn btn-info" type="button" id="button-addon"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    </svg></button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z">
+                        </path>
+                    </svg>
+                    Office Space
+                </button>
             </div>
         </div>
     </div>
@@ -44,14 +99,14 @@
 
 <!-- Modal -->
 <ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Project XML</h4>
-    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
-  </div>
-  <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
-    <pre>{{ formattedXml }}</pre>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modal.close()">Close</button>
-  </div>
+    <div class="modal-header user-select-none">
+        <h4 class="modal-title">Project XML</h4>
+        <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body user-select-none" style="max-height: 500px; overflow-y: auto;">
+        <pre>{{ formattedXml }}</pre>
+    </div>
+    <div class="modal-footer user-select-none">
+        <button type="button" class="btn btn-secondary" (click)="modal.close()">Close</button>
+    </div>
 </ng-template>
