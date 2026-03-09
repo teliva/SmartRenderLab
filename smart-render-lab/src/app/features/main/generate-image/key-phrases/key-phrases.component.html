@@ -1,0 +1,17 @@
+<h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
+    <span>{{ title }} ( {{ selectedPhrases.length }} )</span>
+</h6>
+<div class="text-body-secondary pt-3">
+    <div class="input-group pb-2 mb-2">
+        @for (phrase of phrases; track phrase) {
+        <button type="button" class="btn btn-outline-secondary m-1" (click)="handleButtonAdd(phrase)">
+            <i class="bi bi-plus-lg"></i> {{ phrase }}
+        </button>
+        }
+        @for (phrase of selectedPhrases; track phrase){
+        <button type="button" class="btn btn-info m-1" (click)="handleButtonRemove(phrase)">
+            <i class="bi bi-x-lg"></i> {{ phrase }}
+        </button>
+        }
+    </div>
+</div>

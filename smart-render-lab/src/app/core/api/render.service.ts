@@ -11,12 +11,20 @@ export class RenderService {
   private http = inject(HttpClient);
   private _settingsService = inject(AppsettingsService);
 
-  getRTProjectRender(projXML: string): Observable<ArrayBuffer> {
+  getRTProjectRender(projXml: string): Observable<ArrayBuffer> {
     const url = `${this._settingsService.KitsWebApiUrl}projects/render?ftype=kits&height=1000&width=1000`;
 
-    return this.http.post(url, projXML, {
+    return this.http.post(url, projXml, {
       context: new HttpContext().set(IS_PUBLIC_REQUEST, false),
       responseType: 'arraybuffer'
+    });
+  }
+
+  postSmartImageGenerate(projXml: string): Observable<Object>{
+    const url = `${this._settingsService.KitsWebApiUrl}ai/image/generate`;
+
+    return this.http.post(url, projXml, {
+      context: new HttpContext().set(IS_PUBLIC_REQUEST, false)
     });
   }
 }

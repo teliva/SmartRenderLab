@@ -1,15 +1,18 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import format from 'xml-formatter';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RenderService } from '../../core/api/render.service';
+import { KeyPhrasesComponent } from "./generate-image/key-phrases/key-phrases.component";
 
 @Component({
   selector: 'app-main',
-  imports: [],
+  imports: [KeyPhrasesComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 
 export class MainComponent {
+  private _renderService = inject(RenderService);
   private modalService = inject(NgbModal);
   public formattedXml: string = "";
   public rawXml: string = "";
@@ -26,7 +29,7 @@ export class MainComponent {
       'No furniture',
       '20 foot ceiling Height'
     ];
-  public backgroundKeyPhrasese =
+  public backgroundKeyPhrases =
     [
       'None',
       'Environment',
@@ -47,9 +50,9 @@ export class MainComponent {
     try {
       this.isXmlValid = true;
       return format(rawXml, {
-        indentation: '  ', // Two spaces
-        filter: (node) => true, // Optional: filter nodes
-        collapseContent: true, // Keeps short tags on one line
+        indentation: '  ',
+        filter: (node) => true,
+        collapseContent: true,
         lineSeparator: '\n'
       });
     } catch (e) {

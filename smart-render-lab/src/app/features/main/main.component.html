@@ -1,17 +1,68 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow-sm user-select-none"
-    aria-label="Main navigation">
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow-sm user-select-none" aria-label="Main navigation">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#" aria-label="Company Home">
-            <img src="../favicon.svg" alt="" width="40" height="40" class="d-inline-block">
+            <img src="../favicon.svg" alt="Logo" width="40" height="40" class="d-inline-block">
         </a>
-        <div class="ms-auto">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Smart Render</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Analyze</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-none d-lg-block ms-auto">
             <span class="badge rounded-pill text-bg-primary px-3">v1.0.0</span>
         </div>
     </div>
-</nav>
-<div class="alert alert-warning user-select-none" role="alert">
-    Do not share this link externally
+</nav> -->
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> <a href="/"
+                class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"> <svg class="bi me-2"
+                    width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg> </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search"> <input type="search"
+                    class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            </form>
+            <div class="text-end"> <button type="button" class="btn btn-outline-light me-2">Login</button> <button
+                    type="button" class="btn btn-warning">Sign-up</button> </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+<div class="alert alert-warning user-select-none text-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+        <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+    </svg>
+    <span>Do not share this link externally</span>
 </div>
+
+
+<!-- component that allows you to enter projectXML -->
 <div class="container-fluid">
     <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">
         <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
@@ -40,61 +91,10 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-betwee">
-    <div class="col-5 m-3 p-3 bg-body rounded shadow-sm user-select-none">
-        <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
-            <span>Environment Key Phrases</span>
-        </h6>
-        <div class="text-body-secondary pt-3">
-            <div class="input-group pb-2 mb-2 border-bottom">
-                <input type="text" class="form-control" placeholder="Environment Key Phrase"
-                    aria-label="Environment Key Phrase" aria-describedby="button-addkeyphrase">
-                <button class="btn btn-info" type="button" id="button-addon"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                    </svg></button>
-            </div>
-            <div>
-                <button type="button" class="btn btn-outline-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path
-                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z">
-                        </path>
-                    </svg>
-                    Office Space
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col-5 m-3 p-3 bg-body rounded shadow-sm user-select-none">
-        <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
-            <span>Environment Key Phrases</span>
-        </h6>
-        <div class="text-body-secondary pt-3">
-            <div class="input-group pb-2 mb-2 border-bottom">
-                <input type="text" class="form-control" placeholder="Environment Key Phrase"
-                    aria-label="Environment Key Phrase" aria-describedby="button-addkeyphrase">
-                <button class="btn btn-info" type="button" id="button-addon"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                    </svg></button>
-            </div>
-            <div>
-                <button type="button" class="btn btn-outline-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path
-                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z">
-                        </path>
-                    </svg>
-                    Office Space
-                </button>
-            </div>
-        </div>
-    </div>
+
+<div class="d-flex justify-content-evenly">
+    <app-key-phrases [phrases]="environmentKeyPhrases" title="Environment Effect Key Phrases"></app-key-phrases>
+    <app-key-phrases [phrases]="backgroundKeyPhrases" title="Background Effect Key Phrases"></app-key-phrases>
 </div>
 
 <!-- Modal -->

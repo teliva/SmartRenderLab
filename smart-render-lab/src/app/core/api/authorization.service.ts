@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
-import { lastValueFrom, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AppsettingsService } from './appsettings.service';
 import { IS_PUBLIC_REQUEST } from './public-routes-flag';
 
@@ -30,6 +30,5 @@ export class AuthorizationService {
   getToken(): string | undefined {
     this.authorize();
     return this._accessToken;
-
   }
 }
