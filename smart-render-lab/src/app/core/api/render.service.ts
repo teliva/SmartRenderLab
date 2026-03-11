@@ -3,6 +3,7 @@ import { AppsettingsService } from './appsettings.service';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IS_PUBLIC_REQUEST } from './public-routes-flag';
+import { AIImageRequestDTOModel } from '../DTOs/image-generateDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,12 @@ export class RenderService {
     });
   }
 
-  postSmartImageGenerate(projXml: string): Observable<Object>{
+  postSmartImageGenerate(projXml: string): Observable<Object> {
     const url = `${this._settingsService.KitsWebApiUrl}ai/image/generate`;
 
-    return this.http.post(url, projXml, {
+    let reqBody = new AIImageRequestDTOModel(projXml);
+
+    return this.http.post(url, reqBody, {
       context: new HttpContext().set(IS_PUBLIC_REQUEST, false)
     });
   }

@@ -3,6 +3,7 @@ import format from 'xml-formatter';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RenderService } from '../../core/api/render.service';
 import { KeyPhrasesComponent } from "./generate-image/key-phrases/key-phrases.component";
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -44,6 +45,19 @@ export class MainComponent {
   }
   open(content: any) {
     this.modalService.open(content);
+  }
+
+  smartRender() : void {
+    this._renderService.postSmartImageGenerate(btoa(this.rawXml))
+    .pipe(
+      take(1) // Automatically unsubscribes after the first response
+    )
+    .subscribe({
+      next: (response) => {
+        console.log('Request completed:', response);
+      },
+      error: (err) => console.error(err)
+    });
   }
 
   beautify(rawXml: string): string {
