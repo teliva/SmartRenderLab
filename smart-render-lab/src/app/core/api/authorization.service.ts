@@ -24,7 +24,6 @@ export class AuthorizationService {
     }).pipe(
       tap((response) => {
         this._accessToken = response.accessToken;
-        console.log(this._accessToken);
       })
     );
   }

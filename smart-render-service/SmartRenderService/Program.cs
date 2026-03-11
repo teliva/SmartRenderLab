@@ -4,6 +4,17 @@ using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("LocalDevPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); 
+    });
+});
+
 builder.Services.AddOptions<AuthOptions>()
     .Bind(builder.Configuration.GetSection(AuthOptions.SectionName))
     .ValidateDataAnnotations()         
@@ -40,6 +51,8 @@ builder.Services.AddHttpClient<IAuthService, AuthService>((serviceProvider, clie
 });
 
 var app = builder.Build();
+
+app.UseCors("LocalDevPolicy");
 
 if (app.Environment.IsDevelopment())
 {
