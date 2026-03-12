@@ -1,6 +1,6 @@
 import { AIImageRequestDTO } from "./image-generateDTO.interface";
 
-export class AIImageRequestDTOModel implements AIImageRequestDTO  {
+export class AIImageRequest implements AIImageRequestDTO  {
     UserId = 1697;
     Project = { 
         Id : 7790, 

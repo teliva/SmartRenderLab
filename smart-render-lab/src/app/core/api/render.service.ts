@@ -3,7 +3,8 @@ import { AppsettingsService } from './appsettings.service';
 import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IS_PUBLIC_REQUEST } from './public-routes-flag';
-import { AIImageRequestDTOModel } from '../DTOs/image-generateDTO.model';
+import { AIImageRequest } from '../DTOs/AIImageRequest.model';
+import { js2xml } from 'xml-js';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,7 @@ export class RenderService {
   private http = inject(HttpClient);
   private _settingsService = inject(AppsettingsService);
 
-  private headers = new HttpHeaders({
-  'Content-Type': 'application/json'
-});
+  
 
   getRTProjectRender(projXml: string): Observable<ArrayBuffer> {
     const url = `${this._settingsService.KitsWebApiUrl}projects/render?ftype=kits&height=1000&width=1000`;
@@ -26,14 +25,18 @@ export class RenderService {
   }
 
   postSmartImageGenerate(projXml: string): Observable<Object> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/xml'
+    });
+
     const url = `${this._settingsService.KitsWebApiUrl}ai/image/generate`;
 
-    let reqBody = new AIImageRequestDTOModel(projXml);
-    console.log(reqBody);
-    console.log({AIImageRequest: reqBody });
+    let reqBody = new AIImageRequest(projXml);
 
-    return this.http.post(url, {AIImageRequest: reqBody }, {
-      headers: this.headers,
+    const xmlString = js2xml({ AIImageRequest: reqBody }, { compact: true, spaces: 4 });
+
+    return this.http.post(url, xmlString, {
+      headers: headers,
       context: new HttpContext().set(IS_PUBLIC_REQUEST, false)
     });
   }
