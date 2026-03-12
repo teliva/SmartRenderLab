@@ -50,9 +50,14 @@
 </div>
 
 <div class="container">
-    <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none d-flex justify-content-center align-items-center border border-3 border-danger" 
-         style="min-height: 500px;">
+    <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none d-flex justify-content-center align-items-center border border-3 border-danger"
+        style="min-height: 500px;">
+        @if (!imageUrl) {
         <i class="bi bi-image" style="font-size: 3rem;"></i>
+        <span>No Image</span>
+        } @else {
+        <img [src]="imageUrl" alt="Generated Image" />
+        }
     </div>
 </div>
 

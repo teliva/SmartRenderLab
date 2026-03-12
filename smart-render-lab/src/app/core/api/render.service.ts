@@ -13,8 +13,6 @@ export class RenderService {
   private http = inject(HttpClient);
   private _settingsService = inject(AppsettingsService);
 
-  
-
   getRTProjectRender(projXml: string): Observable<ArrayBuffer> {
     const url = `${this._settingsService.KitsWebApiUrl}projects/render?ftype=kits&height=1000&width=1000`;
 
@@ -24,7 +22,7 @@ export class RenderService {
     });
   }
 
-  postSmartImageGenerate(projXml: string): Observable<Object> {
+  postSmartImageGenerate(projXml: string): Observable<Blob> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/xml'
     });
@@ -37,6 +35,7 @@ export class RenderService {
 
     return this.http.post(url, xmlString, {
       headers: headers,
+      responseType: 'blob',
       context: new HttpContext().set(IS_PUBLIC_REQUEST, false)
     });
   }

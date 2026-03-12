@@ -18,7 +18,8 @@ export class MainComponent {
   public formattedXml: string = "";
   public rawXml: string = "";
   public isXmlValid: boolean = false;
-  
+  public imageUrl: string | null = null;
+
   public environmentKeyPhrases =
     [
       'Open Office',
@@ -30,6 +31,7 @@ export class MainComponent {
       'No furniture',
       '20 foot ceiling Height'
     ];
+
   public backgroundKeyPhrases =
     [
       'None',
@@ -43,21 +45,22 @@ export class MainComponent {
 
     this.formattedXml = this.beautify(ele.value);
   }
+
   open(content: any) {
     this.modalService.open(content);
   }
 
-  smartRender() : void {
+  smartRender(): void {
     this._renderService.postSmartImageGenerate(btoa(this.rawXml))
-    .pipe(
-      take(1) // Automatically unsubscribes after the first response
-    )
-    .subscribe({
-      next: (response) => {
-        console.log('Request completed:', response);
-      },
-      error: (err) => console.error(err)
-    });
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (response) => {
+          this.imageUrl = URL.createObjectURL(response);
+        },
+        error: (err) => console.error(err)
+      });
   }
 
   beautify(rawXml: string): string {
@@ -74,5 +77,16 @@ export class MainComponent {
       console.error("Invalid XML provided", e);
       return "Error parsing XML.";
     }
+  }
+
+  private cleanup() {
+    if (this.imageUrl) {
+      URL.revokeObjectURL(this.imageUrl);
+      this.imageUrl = null;
+    }
+  }
+
+  ngOnDestroy() {
+    this.cleanup();
   }
 }
