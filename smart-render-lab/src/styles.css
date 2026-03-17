@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* Update the main color */
+  --bs-primary: #004739;
+  --bs-secondary: rgb(184, 252, 191);
+  
+  /* Update the RGB version (must be comma-separated values) */
+  --bs-primary-rgb: 0, 71, 57;
+  --bs-secondary-rgb: 184, 252, 191;
+}
+

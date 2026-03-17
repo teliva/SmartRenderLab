@@ -1,2 +1,35 @@
-<app-main></app-main>
+<!-- <nav></nav> -->
+ <!-- Header -->
+<header class="p-3 shadow-sm p-3 mb-5 bg-primary">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#" aria-label="Company Home">
+                <img src="../favicon.svg" alt="Logo" width="40" height="40" class="d-inline-block">
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-2">
+    <li>
+        <a routerLink="/render" 
+           routerLinkActive="text-white" 
+           class="nav-link px-2 text-secondary">Smart Render</a>
+    </li>
+    <li>
+        <a routerLink="/history" 
+           routerLinkActive="text-white" 
+           class="nav-link px-2 text-secondary">History</a>
+    </li>
+    <li>
+        <a routerLink="/analyze" 
+           routerLinkActive="text-white" 
+           class="nav-link px-2 text-secondary">Analyze</a>
+    </li>
+</ul>
+            <div class="text-end">
+                <span class="badge rounded-pill text-bg-dark">v1.0.1</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-content">
 <router-outlet />
+</div>
