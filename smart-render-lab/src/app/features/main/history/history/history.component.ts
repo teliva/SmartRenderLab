@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'
 })
-export class HistoryComponent {
 
+export class HistoryComponent {
+  public charLimit: number = 0;
+  
+  onTextInputChange(event: Event) {
+    const ele = event.target as HTMLInputElement;
+    this.charLimit = ele.value.length;    
+  }
 }

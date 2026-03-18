@@ -1,1 +1,40 @@
-
+<div class="container h-100">
+    <div class="row h-100 overflow-hidden">
+        <div class="col-3 h-100 overflow-auto">
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+            <div class="card m-2 shadow-sm" style="width: 18rem;">
+                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">
+                <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">Prompt</h6>
+                <div class="d-flex text-body-secondary pt-3">
+                    <div class="form-floating w-100">
+                        <textarea 
+                        (input)="onTextInputChange($event)"
+                        class="form-control border-3" id="floatingTextarea" maxlength="150"></textarea>
+                        <label for="floatingTextarea">Prompt</label>
+                        <span class="text-end d-block mt-1">{{ charLimit }}/150</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

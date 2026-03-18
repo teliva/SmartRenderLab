@@ -9,3 +9,13 @@
   --bs-secondary-rgb: 184, 252, 191;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* If using Angular/React/Vue, the root component needs it too */
+app-root, #root {
+  display: block;
+  height: 100%;
+}

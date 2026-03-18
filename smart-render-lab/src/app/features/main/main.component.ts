@@ -42,7 +42,6 @@ export class MainComponent {
   onInputChange(event: Event) {
     const ele = event.target as HTMLInputElement;
     this.rawXml = ele.value;
-
     this.formattedXml = this.beautify(ele.value);
   }
 
