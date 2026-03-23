@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IS_PUBLIC_REQUEST } from './public-routes-flag';
 import { AIImageRequest } from '../DTOs/AIImageRequest.model';
 import { js2xml } from 'xml-js';
+import { ImageGenerationResponse } from '../DTOs/Responses/image-generateResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,10 @@ export class RenderService {
     });
   }
 
-  postSmartImageGenerate(projXml: string): Observable<HttpResponse<Blob>> {
+  postSmartImageGenerate(projXml: string): Observable<ImageGenerationResponse> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/xml'
+      'Content-Type': 'application/xml',
+      'Accept': 'application/json'
     });
 
     const url = `${this._settingsService.KitsWebApiUrl}ai/image/generate`;
@@ -33,10 +35,8 @@ export class RenderService {
 
     const xmlString = js2xml({ AIImageRequest: reqBody }, { compact: true, spaces: 4 });
 
-    return this.http.post(url, xmlString, {
+    return this.http.post<ImageGenerationResponse>(url, xmlString, {
       headers: headers,
-      responseType: 'blob',
-      observe: 'response',
       context: new HttpContext().set(IS_PUBLIC_REQUEST, false)
     });
   }

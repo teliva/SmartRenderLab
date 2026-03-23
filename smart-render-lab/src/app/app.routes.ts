@@ -4,5 +4,6 @@ import { HistoryComponent } from './features/main/history/history/history.compon
 
 export const routes: Routes = [
     { path: 'render', component: MainComponent },
+    { path: '', redirectTo: '/render', pathMatch: 'full' },
     { path: 'history', component: HistoryComponent }
 ];

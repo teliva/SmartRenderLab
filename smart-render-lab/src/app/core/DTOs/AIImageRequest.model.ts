@@ -18,7 +18,7 @@ export class AIImageRequest implements AIImageRequestDTO  {
         IncludeCost: true,
         IncludeModel: true,
         IncludePrompt: true,
-        ImageResponse: 'Image',
+        ImageResponse: 'based64image',
     }
 
     KeyPhrases = {

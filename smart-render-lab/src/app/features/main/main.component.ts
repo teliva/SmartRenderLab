@@ -59,15 +59,12 @@ export class MainComponent {
       )
       .subscribe({
         next: (response) => {
-          console.log('All Header Keys:', response.headers.keys());
-          const customVal = response.headers.get('x-kitsaiimage-prompttext'); 
-          console.log('Found Header:', customVal);
-
-          if (response.body) {
-            this.imageUrl = URL.createObjectURL(response.body);
-          }
+          this.imageUrl = `data:${response.mimeType};base64,${response.based64Image}`;
         },
-        error: (err) => console.error(err),
+        error: (err) => { 
+          console.error(err);
+          this.isLoading = false;
+        },
         complete: () => {
           this.isLoading = false;
         }
