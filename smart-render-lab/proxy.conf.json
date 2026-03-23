@@ -1,0 +1,11 @@
+{
+  "/KiTSWebApi": {
+    "target": "https://www25.kisp.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

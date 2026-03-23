@@ -1,4 +1,8 @@
 <!-- Component that allows you to enter projectXML -->
+@if (isLoading){
+<app-loading-cover></app-loading-cover>
+}
+
 <div class="container">
     <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">
         <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">
@@ -21,24 +25,30 @@
 </div>
 
 
-<div class="container d-flex justify-content-evenly">
+<div class="container d-flex justify-content-between my-3">
     <app-key-phrases [phrases]="environmentKeyPhrases" title="Environment Effect Key Phrases"></app-key-phrases>
     <app-key-phrases [phrases]="backgroundKeyPhrases" title="Background Effect Key Phrases"></app-key-phrases>
-</div>
-
-<!-- Select Image Quality -->
-<div class="container">
-    <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">
-        <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">Settings</h6>
-        <div class="d-flex text-body-secondary pt-3">
-        <select class="form-select" aria-label="Image Size Selection">
-            <option value="1k">1k</option>
-            <option selected value="2k">2k</option>
-            <option value="3k">4k</option>
-        </select>
+        <div class="p-3 bg-body rounded shadow-sm user-select-none">
+            <h6 class="border-bottom pb-2 mb-0 d-flex align-items-center justify-content-between">Settings</h6>
+            <div class="text-body-secondary pt-3">
+                <label for="size" class="form-label">Image Size</label>
+                <select class="form-select" id="size" aria-label="Image Size Selection">
+                    <option value="1k">1k</option>
+                    <option selected value="2k">2k</option>
+                    <option value="3k">4k</option>
+                </select>
+            </div>
+            <div class="text-body-secondary pt-3">
+                <label for="creativity" class="form-label">Creativity</label>
+                <select id="creativity" class="form-select" aria-label="Creativity">
+                    <option selected value="0">0</option>
+                </select>
+            </div>
         </div>
     </div>
-</div>
+
+<!-- Select Image Quality -->
+
 
 <!-- Smart Render Button -->
 <div class="container">
@@ -48,13 +58,13 @@
 <div class="container">
     <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none d-flex justify-content-center align-items-center border border-3 border-danger"
         style="min-height: 500px;">
-        <img class="img-fluid mh-100" src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg">
-        <!-- @if (!imageUrl) {
+        <!-- <img class="img-fluid mh-100" src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg"> -->
+        @if (!imageUrl) {
         <i class="bi bi-image" style="font-size: 3rem;"></i>
         <span>No Image</span>
         } @else {
-        <img [src]="imageUrl" alt="Generated Image" />
-        } -->
+        <img [src]="imageUrl" class="img-fluid mh-100" alt="Generated Image" />
+        }
     </div>
 </div>
 

@@ -8,7 +8,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 
 export class KeyPhrasesComponent {
-  @HostBinding('class') hostClasses = 'col-5 m-3 p-3 bg-body rounded shadow-sm user-select-none';
+  @HostBinding('class') hostClasses = 'col-5 p-3 bg-body rounded shadow-sm user-select-none';
   @Input() phrases: string[] = [];
   @Input() title: string = '';
 

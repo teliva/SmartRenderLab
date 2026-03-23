@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { AppsettingsService } from './appsettings.service';
-import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IS_PUBLIC_REQUEST } from './public-routes-flag';
 import { AIImageRequest } from '../DTOs/AIImageRequest.model';
@@ -22,7 +22,7 @@ export class RenderService {
     });
   }
 
-  postSmartImageGenerate(projXml: string): Observable<Blob> {
+  postSmartImageGenerate(projXml: string): Observable<HttpResponse<Blob>> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/xml'
     });
@@ -36,6 +36,7 @@ export class RenderService {
     return this.http.post(url, xmlString, {
       headers: headers,
       responseType: 'blob',
+      observe: 'response',
       context: new HttpContext().set(IS_PUBLIC_REQUEST, false)
     });
   }
