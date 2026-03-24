@@ -5,6 +5,8 @@ import { RenderService } from '../../core/api/render.service';
 import { KeyPhrasesComponent } from "./generate-image/key-phrases/key-phrases.component";
 import { take } from 'rxjs';
 import { LoadingCoverComponent } from '../loading-cover/loading-cover.component';
+import { GenImgService } from '../../core/services/gen-img.service';
+import { GenImage } from '../../core/services/gen-img.model';
 
 @Component({
   selector: 'app-main',
@@ -16,6 +18,7 @@ import { LoadingCoverComponent } from '../loading-cover/loading-cover.component'
 export class MainComponent {
   private _renderService = inject(RenderService);
   private _modalService = inject(NgbModal);
+  private _genImgService = inject(GenImgService);
   public formattedXml: string = "";
   public rawXml: string = "";
   public isXmlValid: boolean = false;
@@ -58,10 +61,12 @@ export class MainComponent {
         take(1)
       )
       .subscribe({
-        next: (response) => {
+        next: async (response) => {
           this.imageUrl = `data:${response.mimeType};base64,${response.based64Image}`;
+          const genImgDataObj = await GenImage.create(response);
+          this._genImgService.addImage(genImgDataObj);
         },
-        error: (err) => { 
+        error: (err) => {
           console.error(err);
           this.isLoading = false;
         },

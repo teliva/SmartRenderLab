@@ -1,27 +1,11 @@
 <div class="container h-100">
     <div class="row h-100 overflow-hidden">
         <div class="col-3 h-100 overflow-auto">
+            @for (img of (imagesHistory$ | async); track img.imgHash){
             <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
+                <img [src]="getSafeUrl(img)" class="card-img" alt="generated rendered image" />
             </div>
-            <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
-            </div>
-            <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
-            </div>
-            <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
-            </div>
-            <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
-            </div>
-            <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
-            </div>
-            <div class="card m-2 shadow-sm" style="width: 18rem;">
-                <img src="/37df7476-cd68-4931-a81e-d67e41e5bbc6.jpg" class="card-img" alt="furniture-render" />
-            </div>
+        }
         </div>
         <div class="col-9">
             <div class="my-3 p-3 bg-body rounded shadow-sm user-select-none">

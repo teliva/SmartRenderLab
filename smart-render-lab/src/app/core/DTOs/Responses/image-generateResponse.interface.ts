@@ -1,15 +1,15 @@
-export interface TokenDetail {
+interface ITokenDetail {
   modality: 'TEXT' | 'IMAGE';
   tokenCount: number;
 }
 
-export interface UsageMetadata {
+interface IUsageMetadata {
   promptTokenCount: number;
   candidatesTokenCount: number;
   totalTokenCount: number;
   thoughtsTokenCount: number;
-  promptTokensDetails: TokenDetail[];
-  candidatesTokensDetails: TokenDetail[];
+  promptTokensDetails: ITokenDetail[];
+  candidatesTokensDetails: ITokenDetail[];
   modelVersion: string;
   functionType: number;
   functionName: string;
@@ -27,5 +27,5 @@ export interface ImageGenerationResponse {
   aspectRatio: string;
   creativity: string;
   imageSize: string;
-  usageMetadata: UsageMetadata;
+  usageMetadata: IUsageMetadata;
 }
